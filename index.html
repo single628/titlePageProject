@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0 maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <title>题目</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div id="app">
+    <div id="background-image">
+      <img src="./images/1-1.jpg" alt="背景图" id="backimag">
+      <img src="./images/4-1.jpg" alt="分数背景" id="score-image" class="score" style="display:none">
+    </div>
+    <div id="image">
+      <img src="./images/1-2.png" alt="葡萄之家" id="grape-image" class="home">
+      <a href="#/item"><img src="./images/2-1.png" alt="题目背景" id="qusetion-image" class="item" style="display:none"></a>
+    </div>
+    <div id="items" style="display: none;">
+      <p id="topic_title"></p>
+      <ul id="items_list">
+        <li onclick="change(event,0)">
+          <span class="seq">A</span>
+          <span class="answer">答案aaaa</span>
+        </li>
+        <li onclick="change(event,1)">
+          <span class="seq">B</span>
+          <span class="answer">正确答案</span>
+        </li>
+        <li onclick="change(event,2)">
+          <span class="seq">C</span>
+          <span class="answer">答案cccc</span>
+        </li>
+        <li onclick="change(event,3)">
+          <span class="seq">D</span>
+          <span class="answer">答案dddd</span>
+        </li>
+      </ul>
+    </div>
+    <div id="level">
+      <div class="weekden">
+        <img src="./images/WechatIMG2.png" alt="第几周">
+        <span id="con"></span>
+      </div>
+    </div>
+    <div id="start-button">
+      <a href="#/item"><img src="./images/1-4.png" alt="开始" class="home"></a>
+      <a href="#/item"><img src="./images/2-2.png" alt="下一题" class="item click" style="display:none"></a>
+      <a href="#/score"><img src="./images/3-1.png" alt="提交" style="display: none;" id="emit"></a>
+    </div>
+    <div id="scoredisplay" class="score scc">
+      <div id="ppl">
+        <img src="./images/4-2.png" alt="" id="tt">
+        <div id="total-scores"></div>
+        <div id="comment"></div>
+      </div>
+      <img src="./images/4-3.png" alt="" class="scale">
+      <p>关注葡萄之家，获取答案</p>
+      <img src="./images/4-4.png" alt="" class="scale">
+    </div>
+  </div>
+</body>
+<script type="module">
+  import rem from './modules/rem.js';
+  import { router } from "./modules/routes.js";
+  import itemDetail from './modules/store.js';
+</script>
+<script>
+  let flag;
+  window.answerid = [];
+  let i = 0;
+  const chooseType = ['A', 'B', 'C', 'D'];
+  const btn = document.querySelector(".click");
+  const itemsList = document.querySelector("items_list");
+  let item = null;
+  const total = document.getElementById("total-scores");
+  const comment = document.getElementById("comment");
+  const title = document.getElementById("topic_title");
+  //这里必须用事件委托，因为不用事件委托只有点击li的时候才会触发此函数。
+  function change(e, num) {
+    if (e.target.nodeName == "SPAN") {
+      let oli = document.getElementsByTagName("li");
+      for (let item of oli) {
+        if (item.classList.contains('seq2')) {
+          item.classList.remove('seq2');
+        }
+      }
+      e.target.parentNode.classList.add("seq2")
+      window.answerid[i] = num;
+      flag = true;
+      // console.log(answerid[i]);
+    }
+  }
+
+  btn.onclick = function () {
+    if (flag) {
+      i++;
+      item = itemDetail[i];
+      document.getElementById("level").getElementsByTagName("span")[0].innerText = item.topic_title;
+      title.innerText = item.topic_title;
+    } else {
+      alert("您还没有选择答案！");
+    }
+    if (i > 0 && i < itemDetail.length) {
+      itemsList.innerHTML = `
+    <li onclick="change(event,0)"><span class="seq">${chooseType[0]}</span><span class="answer">${item.topic_answer[0].answer_name}</span></li>
+    <li onclick="change(event,1)"><span class="seq">${chooseType[1]}</span><span class="answer">${item.topic_answer[1].answer_name}</span></li>
+    <li onclick="change(event,2)"><span class="seq">${chooseType[2]}</span><span class="answer">${item.topic_answer[2].answer_name}</span></li>
+    <li onclick="change(event,3)"><span class="seq">${chooseType[3]}</span><span class="answer">${item.topic_answer[3].answer_name}</span></li>
+    `}
+    if (i == 4) {
+      btn.style.display = "none";
+      emit.style.display = "inline";
+    }
+  }
+</script>
+
+</html>

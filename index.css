@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  width: 100%;
+  height: 100%;
+}
+body,
+#app,
+#app > #background-image {
+  height: 100vh;
+}
+#app {
+  position: relative;
+}
+#app #background-image img {
+  width: 6.4rem;
+  height: 100vh;
+}
+#app #image {
+  position: absolute;
+  top: 1.64rem;
+  left: 0.4rem;
+}
+#app #image img {
+  width: 5.26rem;
+  height: 4.65rem;
+}
+#app #items {
+  position: absolute;
+  top: 2.3rem;
+  left: 1.5rem;
+  height: 2.6rem;
+}
+#app #items #topic_title {
+  font-size: 0.4rem;
+  color: gold;
+}
+#app #items li {
+  list-style: none;
+  line-height: 0.2rem;
+  margin-bottom: 0.04rem;
+}
+#app #items li span {
+  font-size: 0.36rem;
+  color: gold;
+  align-items: center;
+}
+#app #items li .seq {
+  display: inline-block;
+  width: 0.4rem;
+  line-height: 0.5rem;
+  padding-left: 0.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100%;
+}
+#app #level {
+  position: absolute;
+  left: 3.9rem;
+  top: -1rem;
+}
+#app #level .weekden {
+  position: relative;
+}
+#app #level .weekden img {
+  width: 2rem;
+  height: 3.5rem;
+}
+#app #level .weekden #con {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 2.55rem;
+  line-height: 0.6rem;
+  font-size: 0.32rem;
+  color: #a57c50;
+}
+#app #start-button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 6.6rem;
+}
+#app #start-button img {
+  width: 1.74rem;
+  height: 0.84rem;
+}
+#app .scc {
+  position: absolute;
+  width: 4.8rem;
+  height: 6rem;
+  top: 0.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#app .scc #tt {
+  width: 100%;
+}
+#app .scc .scale {
+  padding-left: 1.2rem;
+  width: 50%;
+}
+#app .scc p {
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  font-size: 0.3rem;
+  margin-bottom: 0.2rem;
+}
+#ppl {
+  position: relative;
+}
+#ppl #total-scores {
+  position: absolute;
+  display: inline-block;
+  top: 2.4rem;
+  left: 1.5rem;
+  font-size: 0.56rem;
+  font-family: Tahoma, Helvetica, Arial;
+  color: #a51d31;
+}
+#ppl #comment {
+  position: absolute;
+  display: inline-block;
+  top: 3rem;
+  left: 1rem;
+  font-size: 0.32rem;
+  font-family: Tahoma, Helvetica, Arial;
+  color: #a51d31;
+}
+.seq2 {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.6);
+}
+/*# sourceMappingURL=./index.css.map */
